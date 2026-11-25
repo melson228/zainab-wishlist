@@ -96,12 +96,10 @@ export function Map2Gis({ mapUrl, address }: Props) {
   if (!mapUrl) return null;
 
   return (
-    <div className="card-surface overflow-hidden rounded-[28px] animate-rise">
+    <div className="invite-panel overflow-hidden rounded-[30px]">
       <div className="flex flex-wrap items-end justify-between gap-3 p-6 pb-4">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--sky)]">
-            Карта 2ГИС
-          </p>
+          <p className="section-kicker">Карта 2ГИС</p>
           {address ? (
             <p className="mt-2 font-[family-name:var(--font-display)] text-xl leading-snug">
               {address}
@@ -121,12 +119,12 @@ export function Map2Gis({ mapUrl, address }: Props) {
       </div>
 
       {coords ? (
-        <div ref={hostRef} className="min-h-[360px] w-full overflow-hidden bg-[var(--sky-soft)]" />
+        <div ref={hostRef} className="min-h-[360px] w-full overflow-hidden bg-[var(--sage-soft)]" />
       ) : (
         <div className="border-t border-[var(--line)] px-6 py-8 text-sm text-[var(--muted)]">
           Нажмите «Открыть в 2ГИС». Чтобы карта появилась здесь, скопируйте
           ссылку через «Поделиться» в 2ГИС — в ней обычно есть координаты{" "}
-          <code className="rounded bg-white px-1">?m=...</code>.
+          <code className="rounded bg-[var(--pearl)] px-1">?m=...</code>.
         </div>
       )}
     </div>

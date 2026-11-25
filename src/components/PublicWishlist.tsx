@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import type { EventSettings, WishlistItem } from "@/lib/types";
 import { ReserveModal } from "./ReserveModal";
+import { Reveal } from "./Reveal";
 import { WishlistCard } from "./WishlistCard";
 
 type Props = {
@@ -53,40 +54,39 @@ export function PublicWishlist({ settings, initialItems }: Props) {
 
   return (
     <>
-      <section className="mx-auto max-w-6xl px-5 pb-20 pt-10 sm:px-8">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-4 animate-rise">
-          <div>
-            <h2 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl">
-              Вишлист
-            </h2>
-            <p className="mt-2 text-[var(--muted)]">
-              Свободно: {available} из {items.length}
-            </p>
-          </div>
-        </div>
+      <section className="mx-auto max-w-6xl px-4 pb-24 pt-6 sm:px-8 sm:pt-10">
+        <Reveal className="mb-10 text-center sm:mb-12">
+          <p className="section-kicker">Подарки</p>
+          <h2 className="mt-3 font-[family-name:var(--font-display)] text-[2.2rem] font-medium tracking-wide sm:text-5xl">
+            Вишлист
+          </h2>
+          <p className="mt-3 text-sm text-[var(--muted)] sm:text-base">
+            Свободно: {available} из {items.length}
+          </p>
+          <span className="ornament-line mt-5 !animate-none opacity-100 sm:mt-6" />
+        </Reveal>
 
         {items.length === 0 ? (
-          <div className="card-surface rounded-[28px] p-10 text-center text-[var(--muted)]">
-            Пока здесь пусто — Зайнаб скоро добавит желания.
-          </div>
+          <Reveal
+            delay={120}
+            className="invite-panel rounded-[24px] px-6 py-12 text-center text-sm text-[var(--muted)] sm:rounded-[30px] sm:px-8 sm:py-14 sm:text-base"
+          >
+            Пока здесь пусто — желания скоро появятся.
+          </Reveal>
         ) : (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {items.map((item, index) => (
-              <div
-                key={item.id}
-                className="animate-rise"
-                style={{ animationDelay: `${Math.min(index, 8) * 0.05}s` }}
-              >
+              <Reveal key={item.id} delay={Math.min(index, 6) * 90}>
                 <WishlistCard item={item} onReserve={setSelected} />
-              </div>
+              </Reveal>
             ))}
           </div>
         )}
 
         {settings.notes ? (
-          <p className="mt-12 text-center text-sm text-[var(--muted)]">
+          <Reveal className="mt-14 text-center text-sm leading-relaxed text-[var(--muted)]">
             {settings.notes}
-          </p>
+          </Reveal>
         ) : null}
       </section>
 

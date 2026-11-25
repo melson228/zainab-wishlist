@@ -29,21 +29,19 @@ export function ReserveModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/35 p-4 sm:items-center"
+      className="fixed inset-0 z-[60] flex items-end justify-center bg-[rgba(58,48,50,0.35)] p-4 sm:items-center"
       onClick={onClose}
     >
       <div
-        className="card-surface w-full max-w-md rounded-3xl p-6 animate-rise"
+        className="invite-panel w-full max-w-md rounded-[28px] p-6 hero-in"
         onClick={(e) => e.stopPropagation()}
       >
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--rose-deep)]">
-          Бронирование
-        </p>
-        <h3 className="mt-2 font-[family-name:var(--font-display)] text-2xl">
+        <p className="section-kicker">Бронирование</p>
+        <h3 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-medium">
           {itemTitle}
         </h3>
         <p className="mt-2 text-[var(--muted)]">
-          Напишите своё имя — так Зайнаб поймёт, кто взял подарок.
+          Напишите своё имя — так будет понятно, кто взял подарок.
         </p>
 
         <label className="mt-5 block">
@@ -58,7 +56,7 @@ export function ReserveModal({
         </label>
 
         {error ? (
-          <p className="mt-3 text-sm text-[var(--rose-deep)]">{error}</p>
+          <p className="mt-3 text-sm text-[var(--blush)]">{error}</p>
         ) : null}
 
         <div className="mt-6 flex flex-wrap gap-3">

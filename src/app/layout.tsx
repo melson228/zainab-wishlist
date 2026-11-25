@@ -1,20 +1,17 @@
 import type { Metadata } from "next";
-import { Manrope, Playfair_Display } from "next/font/google";
+import { body, display } from "@/lib/fonts";
 import "./globals.css";
 
-const display = Playfair_Display({
-  variable: "--font-display",
-  subsets: ["latin", "latin-ext", "cyrillic"],
-});
-
-const body = Manrope({
-  variable: "--font-body",
-  subsets: ["latin", "latin-ext", "cyrillic"],
-});
-
 export const metadata: Metadata = {
-  title: "Зайнаб · Gender Party",
-  description: "Вишлист и детали гендер-пати Зайнаб",
+  title: "Марсель & Зайнаб · Gender Party",
+  description: "Вишлист и детали гендер-пати Марселя и Зайнаб",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

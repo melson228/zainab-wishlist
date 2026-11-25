@@ -1,5 +1,6 @@
 import type { EventSettings } from "@/lib/types";
 import { Map2Gis } from "./Map2Gis";
+import { Reveal } from "./Reveal";
 
 function formatWhen(value: string) {
   if (!value) return "";
@@ -21,25 +22,32 @@ export function EventDetails({ settings }: { settings: EventSettings }) {
   if (!hasDetails) return null;
 
   return (
-    <section id="details" className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-      <div className="grid gap-4 md:grid-cols-2">
+    <section id="details" className="mx-auto max-w-5xl px-4 py-10 sm:px-8 sm:py-16">
+      <Reveal className="mb-8 text-center sm:mb-10">
+        <p className="section-kicker">Детали</p>
+        <h2 className="mt-3 font-[family-name:var(--font-display)] text-[2.2rem] font-medium tracking-wide sm:text-5xl">
+          Ждём вас
+        </h2>
+        <span className="ornament-line mt-5 !animate-none opacity-100 sm:mt-6" />
+      </Reveal>
+
+      <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
         {when ? (
-          <div className="card-surface rounded-[28px] p-7 animate-rise">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--rose-deep)]">
-              Когда
-            </p>
-            <p className="mt-3 font-[family-name:var(--font-display)] text-2xl capitalize">
+          <Reveal className="invite-panel rounded-[24px] px-6 py-7 text-center sm:rounded-[30px] sm:px-7 sm:py-8 md:text-left">
+            <p className="section-kicker">Когда</p>
+            <p className="mt-4 font-[family-name:var(--font-display)] text-xl capitalize leading-snug sm:text-3xl">
               {when}
             </p>
-          </div>
+          </Reveal>
         ) : null}
 
         {settings.address ? (
-          <div className="card-surface rounded-[28px] p-7 animate-rise-delay">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--sky)]">
-              Куда приехать
-            </p>
-            <p className="mt-3 font-[family-name:var(--font-display)] text-2xl leading-snug">
+          <Reveal
+            delay={120}
+            className="invite-panel rounded-[24px] px-6 py-7 text-center sm:rounded-[30px] sm:px-7 sm:py-8 md:text-left"
+          >
+            <p className="section-kicker">Куда приехать</p>
+            <p className="mt-4 font-[family-name:var(--font-display)] text-2xl leading-snug sm:text-3xl">
               {settings.address}
             </p>
             {settings.mapUrl ? (
@@ -47,19 +55,19 @@ export function EventDetails({ settings }: { settings: EventSettings }) {
                 href={settings.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-ghost mt-5 !py-2 text-sm"
+                className="btn-ghost mt-6 !py-2 text-sm"
               >
                 Открыть в 2ГИС
               </a>
             ) : null}
-          </div>
+          </Reveal>
         ) : null}
       </div>
 
       {settings.mapUrl ? (
-        <div className="mt-4">
+        <Reveal delay={180} className="mt-5">
           <Map2Gis mapUrl={settings.mapUrl} />
-        </div>
+        </Reveal>
       ) : null}
     </section>
   );
