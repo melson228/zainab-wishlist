@@ -29,11 +29,11 @@ export function ReserveModal({
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-end justify-center bg-[rgba(58,48,50,0.35)] p-4 sm:items-center"
+      className="fixed inset-0 z-[100] flex items-end justify-center bg-[rgba(58,48,50,0.55)] p-4 sm:items-center"
       onClick={onClose}
     >
       <div
-        className="invite-panel w-full max-w-md rounded-[28px] p-6 hero-in"
+        className="w-full max-w-md rounded-[28px] bg-[#fffaf7] p-6 shadow-[0_24px_60px_rgba(58,48,50,0.22)]"
         onClick={(e) => e.stopPropagation()}
       >
         <p className="section-kicker">Бронирование</p>
