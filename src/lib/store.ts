@@ -9,7 +9,17 @@ import {
 } from "./types";
 
 const STORE_KEY = "zainab-wishlist:v1";
-const LOCAL_FILE = path.join(process.cwd(), "data", "store.json");
+
+function storeFile() {
+  // Amvera: persistenceMount /data. Локально: ./data
+  if (process.env.DATA_DIR) {
+    return path.join(process.env.DATA_DIR, "store.json");
+  }
+  if (process.env.NODE_ENV === "production") {
+    return path.join("/data", "store.json");
+  }
+  return path.join(process.cwd(), "data", "store.json");
+}
 
 function emptyStore(): StoreData {
   return { settings: { ...DEFAULT_SETTINGS }, items: [] };
@@ -27,7 +37,7 @@ function redis() {
 
 async function readLocal(): Promise<StoreData> {
   try {
-    const raw = await fs.readFile(LOCAL_FILE, "utf8");
+    const raw = await fs.readFile(storeFile(), "utf8");
     return JSON.parse(raw) as StoreData;
   } catch {
     return emptyStore();
@@ -35,8 +45,9 @@ async function readLocal(): Promise<StoreData> {
 }
 
 async function writeLocal(data: StoreData) {
-  await fs.mkdir(path.dirname(LOCAL_FILE), { recursive: true });
-  await fs.writeFile(LOCAL_FILE, JSON.stringify(data, null, 2), "utf8");
+  const file = storeFile();
+  await fs.mkdir(path.dirname(file), { recursive: true });
+  await fs.writeFile(file, JSON.stringify(data, null, 2), "utf8");
 }
 
 export async function getStore(): Promise<StoreData> {
