@@ -5,7 +5,8 @@ export async function POST(request: Request) {
     password?: string;
   } | null;
 
-  if (!body?.password || body.password !== getAdminPassword()) {
+  const password = body?.password?.trim() ?? "";
+  if (!password || password !== getAdminPassword()) {
     return Response.json({ error: "Неверный пароль" }, { status: 401 });
   }
 

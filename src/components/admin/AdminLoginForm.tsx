@@ -17,17 +17,17 @@ export function AdminLoginForm() {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
         body: JSON.stringify({ password }),
       });
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setError(data.error || "Ошибка входа");
+        setError(data.error || "Неверный пароль");
         return;
       }
-      router.replace("/admin");
-      router.refresh();
+      window.location.href = "/admin";
     } catch {
-      setError("Не удалось войти");
+      setError("Не удалось войти. Проверьте сеть / деплой.");
     } finally {
       setBusy(false);
     }
@@ -58,7 +58,6 @@ export function AdminLoginForm() {
           autoFocus
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          onInput={(e) => setPassword((e.target as HTMLInputElement).value)}
           placeholder="Введите пароль"
           required
         />
