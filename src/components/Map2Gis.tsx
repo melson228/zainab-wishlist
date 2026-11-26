@@ -120,13 +120,7 @@ export function Map2Gis({ mapUrl, address }: Props) {
 
       {coords ? (
         <div ref={hostRef} className="min-h-[360px] w-full overflow-hidden bg-[var(--sage-soft)]" />
-      ) : (
-        <div className="border-t border-[var(--line)] px-6 py-8 text-sm text-[var(--muted)]">
-          Нажмите «Открыть в 2ГИС». Чтобы карта появилась здесь, скопируйте
-          ссылку через «Поделиться» в 2ГИС — в ней обычно есть координаты{" "}
-          <code className="rounded bg-[var(--pearl)] px-1">?m=...</code>.
-        </div>
-      )}
+      ) : null}
     </div>
   );
 }

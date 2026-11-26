@@ -11,14 +11,14 @@ export function WishlistCard({ item, onReserve }: Props) {
   const reserved = Boolean(item.reservedBy);
 
   return (
-    <article className="group overflow-hidden rounded-[26px] invite-panel transition duration-500 hover:-translate-y-1.5">
-      <div className="relative aspect-[4/3] overflow-hidden bg-[var(--bg-deep)]">
+    <article className="group flex h-full flex-col overflow-hidden rounded-[26px] invite-panel transition duration-500 hover:-translate-y-1">
+      <div className="relative aspect-[4/3] shrink-0 overflow-hidden bg-[var(--bg-deep)]">
         {item.imageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={item.imageUrl}
             alt={item.title}
-            className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+            className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
           />
         ) : (
           <div className="flex h-full items-center justify-center text-[var(--muted)]">
@@ -34,7 +34,7 @@ export function WishlistCard({ item, onReserve }: Props) {
         ) : null}
       </div>
 
-      <div className="p-5">
+      <div className="flex flex-1 flex-col p-5">
         <h3 className="font-[family-name:var(--font-display)] text-2xl font-medium leading-tight">
           {item.title}
         </h3>
@@ -44,7 +44,7 @@ export function WishlistCard({ item, onReserve }: Props) {
           </p>
         ) : null}
 
-        <div className="mt-5 flex flex-wrap gap-2">
+        <div className="mt-auto flex flex-wrap gap-2 pt-5">
           {item.productUrl ? (
             <a
               href={item.productUrl}

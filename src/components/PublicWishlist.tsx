@@ -74,9 +74,13 @@ export function PublicWishlist({ settings, initialItems }: Props) {
             Пока здесь пусто — желания скоро появятся.
           </Reveal>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+          <div className="grid items-stretch gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {items.map((item, index) => (
-              <Reveal key={item.id} delay={Math.min(index, 6) * 90}>
+              <Reveal
+                key={item.id}
+                delay={Math.min(index, 6) * 90}
+                className="h-full min-w-0"
+              >
                 <WishlistCard item={item} onReserve={setSelected} />
               </Reveal>
             ))}

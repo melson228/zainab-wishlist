@@ -125,7 +125,7 @@ body::before {
 
 .reveal {
   opacity: 0;
-  transform: translateY(42px);
+  transform: translateY(18px);
   transition:
     opacity 1.05s cubic-bezier(0.22, 1, 0.36, 1),
     transform 1.05s cubic-bezier(0.22, 1, 0.36, 1);
