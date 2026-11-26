@@ -34,7 +34,10 @@ export function AdminLoginForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="card-surface mx-auto w-full max-w-md rounded-[28px] p-7">
+    <form
+      onSubmit={onSubmit}
+      className="relative z-10 mx-auto w-full max-w-md rounded-[28px] bg-[#fffaf7] p-7 shadow-[0_20px_50px_rgba(58,48,50,0.12)]"
+    >
       <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--rose-deep)]">
         Для Зайнаб
       </p>
@@ -50,8 +53,12 @@ export function AdminLoginForm() {
         <input
           className="field"
           type="password"
+          name="password"
+          autoComplete="current-password"
+          autoFocus
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onInput={(e) => setPassword((e.target as HTMLInputElement).value)}
           placeholder="Введите пароль"
           required
         />
