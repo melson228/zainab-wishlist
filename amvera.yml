@@ -5,9 +5,15 @@ meta:
     version: "20"
 
 build:
-  additionalCommands: npm run build
+  # standalone-сборка легче по RAM, чем обычный next start
+  additionalCommands: >
+    npm run build
+    && cp -r public .next/standalone/
+    && mkdir -p .next/standalone/.next
+    && cp -r .next/static .next/standalone/.next/
 
 run:
-  command: npm run start -- -p 80
+  command: PORT=80 HOSTNAME=0.0.0.0 node .next/standalone/server.js
   containerPort: 80
   persistenceMount: /data
+
