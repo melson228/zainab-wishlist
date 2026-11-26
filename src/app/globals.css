@@ -38,15 +38,27 @@ body {
   margin: 0;
   min-height: 100%;
   color: var(--ink);
-  background:
-    radial-gradient(900px 560px at 12% -8%, #ffd6e2 0%, transparent 58%),
-    radial-gradient(860px 520px at 92% 0%, #ccebff 0%, transparent 55%),
-    radial-gradient(700px 420px at 50% 100%, #d4efff 0%, transparent 50%),
-    var(--bg);
+  background: var(--bg);
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
+/* Atmosphere stays fixed to the viewport — no hard seam mid-page on long scroll */
 body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 70% 55% at 8% 0%, rgba(255, 214, 226, 0.55) 0%, transparent 70%),
+    radial-gradient(ellipse 65% 50% at 96% 4%, rgba(204, 235, 255, 0.5) 0%, transparent 68%),
+    radial-gradient(ellipse 55% 45% at 50% 100%, rgba(212, 239, 255, 0.35) 0%, transparent 72%),
+    radial-gradient(ellipse 50% 40% at 80% 55%, rgba(237, 213, 218, 0.22) 0%, transparent 75%),
+    radial-gradient(ellipse 45% 35% at 15% 60%, rgba(204, 235, 255, 0.18) 0%, transparent 75%),
+    var(--bg);
+}
+
+body::after {
   content: "";
   pointer-events: none;
   position: fixed;

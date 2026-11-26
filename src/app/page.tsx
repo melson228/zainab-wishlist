@@ -22,8 +22,8 @@ async function HomeContent() {
   return (
     <>
       <header className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-5 py-16 sm:px-8">
-        <div className="pointer-events-none absolute -left-20 top-16 h-52 w-52 rounded-full bg-[radial-gradient(circle,#ffd6e2,transparent_70%)] soft-float" />
-        <div className="pointer-events-none absolute -right-16 bottom-28 h-60 w-60 rounded-full bg-[radial-gradient(circle,#ccebff,transparent_70%)] soft-float" />
+        <div className="pointer-events-none absolute -left-28 top-8 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(255,214,226,0.55)_0%,transparent_72%)] soft-float" />
+        <div className="pointer-events-none absolute -right-24 bottom-16 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(204,235,255,0.5)_0%,transparent_72%)] soft-float" />
 
         <div className="relative z-10 mx-auto w-full max-w-3xl text-center">
           <p
